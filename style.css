@@ -1,0 +1,22 @@
+.timer-section {
+  margin-top: 100px;
+  width: 100%;
+}
+
+#timer {
+  width: 200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 40pt;
+  font-weight: 700;
+  text-align: center;
+}
+
+.buttons {
+  width: 200px;
+  margin: 0 auto; 
+}
+
+.buttons button {
+  width: 90px;
+}
