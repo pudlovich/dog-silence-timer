@@ -1,5 +1,8 @@
+.section {
+  margin-top: 40px;
+}
+
 .timer-section {
-  margin-top: 100px;
   width: 100%;
 }
 
@@ -14,7 +17,8 @@
 
 .buttons {
   width: 200px;
-  margin: 0 auto; 
+  margin: 0 auto;
+  text-align: center;
 }
 
 .buttons button {
