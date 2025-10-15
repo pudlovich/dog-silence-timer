@@ -6,6 +6,12 @@ function launchMealTimer() {
   startTimer(getCurrentInterval(), onTimerEnd);
 }
 
+document.getElementById("startSilence").addEventListener("click", launchSilenceTimer);
+function launchSilenceTimer() {
+  setIntervalsArray([5,10,10,15,15,20,20,25,25,30,30,40,40,50,50,60])
+  startTimer(getCurrentInterval(), onTimerEnd);
+}
+
 // // //
 // // FUNCTIONS FOR MANAGING THE STATE OF INTERVALS ARRAY
 var intervalsArray;
@@ -82,13 +88,13 @@ function playBeep() {
 
   osc.type = "sawtooth";
   osc.frequency.value = 200; // Hz
-  gain.gain.value = 0.03; // volume (0–1)
+  gain.gain.value = 0.04; // volume (0–1)
 
   osc.connect(gain);
   gain.connect(audioCtx.destination);
 
   osc.start();
-  osc.stop(audioCtx.currentTime + 0.2); // 200ms
+  osc.stop(audioCtx.currentTime + 0.4); // 4200ms
 
   // Optional cleanup to avoid memory leaks
   osc.onended = () => audioCtx.close();
