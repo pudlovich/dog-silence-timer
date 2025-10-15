@@ -8,7 +8,7 @@ function launchMealTimer() {
 
 document.getElementById("startSilence").addEventListener("click", launchSilenceTimer);
 function launchSilenceTimer() {
-  setIntervalsArray([5,10,10,15,15,20,20,25,25,30,30,40,40,50,50,60])
+  setIntervalsArray([10,10,10,15,15,20,20,25,25,30,30,40,40,50,50,60])
   startTimer(getCurrentInterval(), onTimerEnd);
 }
 
