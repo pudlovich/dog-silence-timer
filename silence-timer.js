@@ -2,11 +2,39 @@
 // // FUNCTIONS FOR LAUNCHING THE TIMER AT THE TOP LEVEL
 document.getElementById("start").addEventListener("click", launchTimer);
 function launchTimer() {
-  startTimer(5, onTimerEnd);
+  setIntervalsArray([2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7])
+  startTimer(getCurrentInterval(), onTimerEnd);
 }
 
 // // //
 // // FUNCTIONS FOR MANAGING THE STATE OF INTERVALS ARRAY
+var intervalsArray;
+var currentIntervalIndex;
+function setIntervalsArray(array) {
+  intervalsArray = array;
+  currentIntervalIndex = 0;
+}
+
+function getCurrentInterval() {
+  return intervalsArray[currentIntervalIndex];
+}
+
+function nextInterval() {
+  if(currentIntervalIndex < intervalsArray.length - 1) {
+    currentIntervalIndex++;
+  }
+}
+
+function previousInterval() {
+  if(currentIntervalIndex > 0) {
+    currentIntervalIndex--;
+  }
+}
+
+function goToInterval(index) {
+  currentIntervalindex = index;
+}
+
 
 // // //
 // // FUNCTIONS FOR TIMER FUNCTIONALITY AND "END TIMER" HOOK
@@ -40,7 +68,8 @@ function startTimer(duration, onEnd) {
 
 function onTimerEnd() {
   console.log("finished");
-  startTimer(5, onTimerEnd);
+  nextInterval();
+  startTimer(getCurrentInterval(), onTimerEnd);
 }
 
 // // //
@@ -48,11 +77,11 @@ function onTimerEnd() {
 document.getElementById("early-snackie").addEventListener("click", earlySnackie);
 function earlySnackie() {
   console.log("early snackie");
-  startTimer(5, onTimerEnd);
+  startTimer(getCurrentInterval(), onTimerEnd);
 }
 
 document.getElementById("barking-doggo").addEventListener("click", barkingDoggo);
 function barkingDoggo() {
   console.log("barking doggo");
-  startTimer(5, onTimerEnd);
+  startTimer(getCurrentInterval(), onTimerEnd);
 }
