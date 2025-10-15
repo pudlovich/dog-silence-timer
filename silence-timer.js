@@ -1,8 +1,8 @@
 // // //
 // // FUNCTIONS FOR LAUNCHING THE TIMER AT THE TOP LEVEL
-document.getElementById("start").addEventListener("click", launchTimer);
-function launchTimer() {
-  setIntervalsArray([2,7,2,7,2,7,2,7,2,7,2,7,2,7,2,7])
+document.getElementById("startMeal").addEventListener("click", launchMealTimer);
+function launchMealTimer() {
+  setIntervalsArray([40,40,50,50,60,60,75,75,90,90,105,105,120])
   startTimer(getCurrentInterval(), onTimerEnd);
 }
 
@@ -68,8 +68,30 @@ function startTimer(duration, onEnd) {
 
 function onTimerEnd() {
   console.log("finished");
+  playBeep()
   nextInterval();
   startTimer(getCurrentInterval(), onTimerEnd);
+}
+
+// // //
+// // FUNCTIONS for end of timer beep
+function playBeep() {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.type = "sawtooth";
+  osc.frequency.value = 200; // Hz
+  gain.gain.value = 0.03; // volume (0–1)
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.2); // 200ms
+
+  // Optional cleanup to avoid memory leaks
+  osc.onended = () => audioCtx.close();
 }
 
 // // //
