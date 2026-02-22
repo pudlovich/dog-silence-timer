@@ -94,7 +94,7 @@ function playBeep() {
   gain.connect(audioCtx.destination);
 
   osc.start();
-  osc.stop(audioCtx.currentTime + 0.4); // 4200ms
+  osc.stop(audioCtx.currentTime + 0.4); // 400ms
 
   // Optional cleanup to avoid memory leaks
   osc.onended = () => audioCtx.close();
